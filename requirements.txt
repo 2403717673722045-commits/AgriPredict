@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+streamlit
+matplotlib
+seaborn
+joblib
+Pillow
+plotly
+google-generativeai
+pymongo

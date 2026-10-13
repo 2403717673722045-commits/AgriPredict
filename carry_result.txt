@@ -1,0 +1,4 @@
+carry found: 1
+view=Predict exc=ElementList()
+pred buttons: 1
+exc2=ElementList() log=[{'area': 'India', 'item': 'Maize', 'year': 2020, 'average_rain_fall_mm_per_year': 1200.0, 'pesticides_tonnes': 46000.0, 'avg_temp': 24.0, 'model': 'Random Forest', 'pred_hg_ha': 26247.1, 'time': '11:20:07'}]

@@ -1,0 +1,50 @@
+{
+  "Decision Tree": {
+    "best_params": {
+      "max_depth": null,
+      "min_samples_split": 5
+    },
+    "cv_R2": 0.9719211540514872,
+    "test_R2": 0.976814348489652,
+    "test_RMSE": 13132.718890869548,
+    "test_MAE": 4333.414594177752,
+    "default_R2": 0.9757319326959936,
+    "beats_default": true
+  },
+  "KNN": {
+    "best_params": {
+      "n_neighbors": 3
+    },
+    "cv_R2": 0.9793684215999915,
+    "test_R2": 0.9841731709927269,
+    "test_RMSE": 10850.305126158499,
+    "test_MAE": 4472.15930852773,
+    "default_R2": 0.9824249250032908,
+    "beats_default": true
+  },
+  "Random Forest": {
+    "best_params": {
+      "max_depth": null,
+      "n_estimators": 100
+    },
+    "cv_R2": 0.9801145378313818,
+    "test_R2": 0.9839685091367588,
+    "test_RMSE": 10920.234189757071,
+    "test_MAE": 4074.491336032389,
+    "default_R2": 0.9839685091367588,
+    "beats_default": false
+  },
+  "Gradient Boosting": {
+    "best_params": {
+      "learning_rate": 0.1,
+      "n_estimators": 100
+    },
+    "cv_R2": 0.8655670332836625,
+    "test_R2": 0.8575811941669191,
+    "test_RMSE": 32548.32667336296,
+    "test_MAE": 21050.97274242972,
+    "default_R2": 0.8575811941669191,
+    "beats_default": false
+  },
+  "_note": "Linear/Polynomial Regression have no meaningful hyperparameters to tune (solver settings only) \u2014 honestly skipped. Shipped predictor keeps default settings; tuned scores are reported for comparison."
+}

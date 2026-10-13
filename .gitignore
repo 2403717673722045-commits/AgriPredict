@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+_backup_*/
+models/backup_*/
+tmp_retrain_test/
