@@ -40,6 +40,21 @@ py train.py
 py tune.py
 py -m streamlit run app.py
 ```
+If a model file ever fails to load (`KeyError` in `pickle.load` = corrupt file on disk),
+run `py repair_models.py` — it rebuilds only the broken pipelines with the exact training
+procedure (seconds each, ~1 min for GB) and never touches healthy files.
+
+## Deploy to Streamlit Community Cloud
+`requirements.txt` is version-pinned (scikit-learn==1.6.1 — unpinned installs break `joblib.load`
+with `_RemainderColsList`-type errors) and `runtime.txt` pins Python 3.13.7 (pickles are
+version-sensitive). Model files are zlib-compressed (~25 MB each) to fit GitHub's 100 MB limit.
+1. Push the whole folder to GitHub (data/, models/, outputs/, assets/, src/, *.py, *.txt, *.toml).
+2. share.streamlit.io → New app → repo/branch → main file `app.py` → Deploy.
+3. Optional Secrets (App settings → Secrets): `GEMINI_API_KEY="..."` for live AI.
+   MongoDB: `localhost` does not exist in the cloud — paste an Atlas `mongodb+srv://…` URI in the
+   app's Connect box, or leave it (session-only store, honestly labelled).
+4. After pushing new commits: dashboard → Reboot app. If the cloud rejects `runtime.txt`,
+   delete that line/file and redeploy (then re-test predictions immediately).
 Open http://localhost:8501. Views: Home · Data Prep (upload + preprocessing + EDA + optional retrain) ·
 Crops · Predict · Lab (6 models + GridSearchCV tuning table) · Insights · Simulator · Farmer AI (live/offline chat) ·
 About.

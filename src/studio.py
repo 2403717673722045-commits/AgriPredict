@@ -30,7 +30,13 @@ def load_pipeline(name: str):
     safe = {"Linear Regression": "linear", "Polynomial Regression": "poly",
             "Decision Tree": "tree", "Random Forest": "forest", "KNN": "knn",
             "Gradient Boosting": "gb"}[name]
-    return joblib.load(MODELS_DIR / "pipelines" / f"{safe}.pkl")
+    path = MODELS_DIR / "pipelines" / f"{safe}.pkl"
+    try:
+        return joblib.load(path)
+    except Exception:
+        st.warning(f"⚠ Saved {name} file is unreadable — showing the best-model result instead. "
+                   "Fix any time with:  py repair_models.py")
+        return joblib.load(MODELS_DIR / "best_pipeline.pkl")
 
 
 @st.cache_resource(show_spinner="Retraining Polynomial model (degree changed)...")
